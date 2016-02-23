@@ -97,7 +97,7 @@ func (sc *StatsCommand) Execute(update *tgbotapi.Update) error {
 
 		score := time.Duration(scoreboard[user.ID])
 		if score.Seconds() < 1 {
-			out += fmt.Sprintf("\n%s: %d ms", user.UserName, (score.Nanoseconds() / 1000))
+			out += fmt.Sprintf("\n%s: %.4f ms", user.UserName, (score.Nanoseconds() / 1000))
 		} else {
 			out += fmt.Sprintf("\n%s: %s", user.UserName, score)
 		}
