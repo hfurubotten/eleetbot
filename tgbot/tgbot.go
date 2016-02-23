@@ -4,7 +4,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/Syfaro/telegram-bot-api"
+	"github.com/go-telegram-bot-api/telegram-bot-api"
 	"github.com/hfurubotten/eleetbot/tgbot/commands"
 	"github.com/hfurubotten/eleetbot/tgbot/items"
 )
@@ -39,7 +39,7 @@ func (tg *TelegramBot) Start() error {
 	u := tgbotapi.NewUpdate(0)
 	u.Timeout = 60
 
-	err := tg.Bot.UpdatesChan(u)
+	updates, err := tg.Bot.GetUpdatesChan(u)
 	if err != nil {
 		return err
 	}
@@ -56,7 +56,7 @@ func (tg *TelegramBot) Start() error {
 			handler.SetBotAPI(tg.Bot)
 		}
 
-		for update := range tg.Bot.Updates {
+		for update := range updates {
 			log.Printf("[%s] in %s: %s", update.Message.From.UserName, update.Message.Chat.Title, update.Message.Text)
 
 			chat, err := items.NewChat(update.Message.Chat)

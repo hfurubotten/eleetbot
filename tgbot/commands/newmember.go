@@ -3,7 +3,7 @@ package commands
 import (
 	"fmt"
 
-	"github.com/Syfaro/telegram-bot-api"
+	"github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
 // NewMemberCommand will handle a new member joining a chat.
@@ -39,6 +39,6 @@ func (nmc *NewMemberCommand) Execute(update *tgbotapi.Update) error {
 		output = fmt.Sprintf("Hey, @%s. Welcome to %s.", update.Message.NewChatParticipant.UserName, update.Message.Chat.Title)
 	}
 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, output)
-	_, err := nmc.bot.SendMessage(msg)
+	_, err := nmc.bot.Send(msg)
 	return err
 }

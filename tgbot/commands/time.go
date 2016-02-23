@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Syfaro/telegram-bot-api"
+	"github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
 // TimeCommand will handle a /time command from a chat, and print back the current server time.
@@ -33,7 +33,7 @@ func (hc *TimeCommand) Execute(update *tgbotapi.Update) error {
 	hour, min, sec := time.Now().Clock()
 	timestring := fmt.Sprintf("%d:%d:%d", hour, min, sec)
 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, timestring)
-	_, err := hc.bot.SendMessage(msg)
+	_, err := hc.bot.Send(msg)
 
 	return err
 }

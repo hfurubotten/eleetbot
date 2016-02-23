@@ -1,6 +1,6 @@
 package commands
 
-import "github.com/Syfaro/telegram-bot-api"
+import "github.com/go-telegram-bot-api/telegram-bot-api"
 
 // Command is an interface used to describe a handler for a chat command.
 type Command interface {

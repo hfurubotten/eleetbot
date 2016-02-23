@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Syfaro/telegram-bot-api"
+	"github.com/go-telegram-bot-api/telegram-bot-api"
 	"github.com/hfurubotten/eleetbot/tgbot/items"
 )
 
@@ -81,7 +81,7 @@ func (sc *StatsCommand) Execute(update *tgbotapi.Update) error {
 
 	if len(top) == 0 {
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "No one have been elite enough...")
-		_, err = sc.bot.SendMessage(msg)
+		_, err = sc.bot.Send(msg)
 
 		return err
 	}
@@ -104,7 +104,7 @@ func (sc *StatsCommand) Execute(update *tgbotapi.Update) error {
 	}
 
 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, out)
-	_, err = sc.bot.SendMessage(msg)
+	_, err = sc.bot.Send(msg)
 
 	return err
 }

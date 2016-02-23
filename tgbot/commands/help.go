@@ -3,7 +3,7 @@ package commands
 import (
 	"strings"
 
-	"github.com/Syfaro/telegram-bot-api"
+	"github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
 // HelpCommand will handle a /help command from a chat, and print back a commandlist.
@@ -29,7 +29,7 @@ func (hc *HelpCommand) PreProcessText(update *tgbotapi.Update) error {
 // Execute will run the help command towards the chat where the command was posted.
 func (hc *HelpCommand) Execute(update *tgbotapi.Update) error {
 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, commandHelpList)
-	_, err := hc.bot.SendMessage(msg)
+	_, err := hc.bot.Send(msg)
 
 	return err
 }

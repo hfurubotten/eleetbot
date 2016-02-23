@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Syfaro/telegram-bot-api"
+	"github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
 // GlobalCommand will handle a /global command from a chat, and give back the global scoreboard.
@@ -33,7 +33,7 @@ func (gc *GlobalCommand) Execute(update *tgbotapi.Update) error {
 	hour, min, sec := time.Now().Clock()
 	timestring := fmt.Sprintf("%d:%d:%d", hour, min, sec)
 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, timestring)
-	_, err := gc.bot.SendMessage(msg)
+	_, err := gc.bot.Send(msg)
 
 	return err
 }

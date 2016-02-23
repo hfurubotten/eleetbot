@@ -3,7 +3,7 @@ package commands
 import (
 	"strings"
 
-	"github.com/Syfaro/telegram-bot-api"
+	"github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
 // MentionedCommand will handle a message where the bot is mentioned.
@@ -29,7 +29,7 @@ func (mc *MentionedCommand) PreProcessText(update *tgbotapi.Update) error {
 // Execute will run the echo command towards the chat where the command was posted.
 func (mc *MentionedCommand) Execute(update *tgbotapi.Update) error {
 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, mentionedText)
-	_, err := mc.bot.SendMessage(msg)
+	_, err := mc.bot.Send(msg)
 
 	return err
 }

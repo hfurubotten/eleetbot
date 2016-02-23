@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/Syfaro/telegram-bot-api"
+	"github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
 // EchoCommand will handle a /echo command from a chat. It process the incomming
@@ -50,12 +50,12 @@ func (ec *EchoCommand) Execute(update *tgbotapi.Update) error {
 		echomsg = fmt.Sprintf("Thats really not a good thing to say about yourself, @%s.", update.Message.From.UserName)
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, echomsg)
 		msg.ReplyToMessageID = update.Message.MessageID
-		_, err := ec.bot.SendMessage(msg)
+		_, err := ec.bot.Send(msg)
 		return err
 	}
 
 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, echomsg)
-	_, err := ec.bot.SendMessage(msg)
+	_, err := ec.bot.Send(msg)
 
 	return err
 }
